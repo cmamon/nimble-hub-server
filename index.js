@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-let port = process.env.PORT || 8008;
+let port = process.env.PORT || 8080;
 
 const server = app.listen(port, () => {
   console.log('\x1b[32m%s\x1b[0m', 'Server running on port ' + port);
