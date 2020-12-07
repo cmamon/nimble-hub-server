@@ -29,13 +29,13 @@ const io = socketio(server, {
 io.on('connection', (socket) => {
   const clientIp = socket.request.connection.remoteAddress;
 
-  io.emit('join', `${clientIp} has joined the chat`);
+  socket.broadcast.emit('join', `${clientIp} has joined the chat`);
 
   socket.on('message', (msg) => {
-    io.emit('message', msg);
+    socket.broadcast.emit('message', msg);
   });
 
   socket.on('disconnect', () => {
-    io.emit('left', `${clientIp} has left the chat`);
+    socket.broadcast.emit('left', `${clientIp} has left the chat`);
   });
 });
